@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>我的导航</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     <header></header>
-    <main id="x">
-      
+    <main>
+      <div class="wrapper" id="main1">
+
+      </div>
     </main>
     <footer></footer>
     <script>
@@ -32,9 +35,43 @@
             's': 'sohu.com',
             'm': 'mcdonalds.com'
 
+        }   //遍历keys,生成kbd标签
+        var hashInlocalStorage = JSON.parse(localStorage.getItem('uuu') || 'null')//取出localStorage中的uuu对应的hash
+        if(hashInlocalStorage){
+            hash = hashInlocalStorage
         }
-        div1 = document.createElement('div')
-        x.appendChild(div1)
+        index =0
+        while(index< keys['length']){
+            div1 = document.createElement('div')
+            main1.appendChild(div1)
+            row=keys[index]       //第一个数组 第二个数组 第三数组
+            index2 =0
+            while(index2< row['length']){     // 0-9  0-8  0-6
+                kbd1 = document.createElement('kbd')
+                kbd1.textContent=row[index2]
+                button1 = document.createElement('button')
+                button1.textContent ='编辑'
+                button1.id = row[index2]
+                button1.onclick = function(chong){
+                    key = chong['target']['id']   //targei可以按照哈希算法顺序指定命名的按键
+                    x = prompt('给我一个网址')
+                    hash[key] = x   //hash变更
+                    localStorage.setItem('uuu', JSON.stringify(hash))   //只要hash变了，就存到“uuu”里面
+                    console.log(hash)
+                }
+                kbd1.appendChild(button1)
+                div1.appendChild(kbd1)
+                index2 = index2 + 1
+            }
+            index =index+1
+        }   //两层while循环
+        document.onkeypress =function(chong){
+            key = chong['key']
+            website = hash[key]
+            console.log(website)
+            //location.href = 'http://'+website
+            window.open('http://'+website, '_blank')
+        }
     </script>
 </body>
 </html>
