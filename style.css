@@ -12,8 +12,16 @@ kbd > button{
 kbd:hover > button{
     display: inline-block;
 }
+body{
+    background: url(./img/wall.jpg) no-repeat center center;
+    background-size: cover;
+}
 main{
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 #main1{
     display:inline-block;
@@ -22,5 +30,38 @@ main{
     margin-left: 1em;
 }
 #main1>div:nth-child(3){
-    margin-left: 2em;
+    margin-left: -40px;
+}
+.wrapper{
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+}
+.key{
+    width: 50px;
+    height: 40px;
+    background: linear-gradient(to bottom, #292929 0%,#111111 100%);
+    border: 1px solid #373737;
+    color: #c5c5c5;
+    border-radius: 7px;
+    box-shadow: 0 0 0 1px #1A1B1C,0 0 0 2px #1F2020,0 2px 0 2px #080808;
+    position: relative;
+    font-size: 16px;
+    font-family: "NewRoma";
+}
+.row{
+    margin: 16px;
+}
+.row .key{
+    margin: 0 6px;
+}
+.key img{
+    width: 16px;
+    height: 16px;
+    position:absolute;
+    left: 4px; bottom:2px;
+}
+.key .text{
+    position:absolute;
+    left: 4px;
+    top: 4px;
 }
