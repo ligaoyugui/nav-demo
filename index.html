@@ -34,6 +34,7 @@
             'a': 'acfun.tv',
             's': 'sohu.com',
             'm': 'mcdonalds.com'
+            
 
         }   //遍历keys,生成kbd标签
         var hashInlocalStorage = JSON.parse(localStorage.getItem('uuu') || 'null')//取出localStorage中的uuu对应的hash
@@ -68,11 +69,17 @@
             }
 
                 button1.onclick = function(chong){
-                    key = chong['target']['id']   //targei可以按照哈希算法顺序指定命名的按键
+                    button2 = chong['target']
+                    img2 = button2.previousSibling
+                    key = button2['id']   //targei可以按照哈希算法顺序指定命名的按键
                     x = prompt('给我一个网址')
                     hash[key] = x   //hash变更
+                    img2.src = 'http://'+hash[row[index2]]+'/favicon.ico'
+                    img2.onerror = function(qqq){
+                    qqq.target.src = './img/警示.png'
+                    }
                     localStorage.setItem('uuu', JSON.stringify(hash))   //只要hash变了，就存到“uuu”里面
-                    console.log(hash)
+                    
                 }
                 kbd1.appendChild(img)
                 kbd1.appendChild(button1)
